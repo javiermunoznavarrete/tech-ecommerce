@@ -7,12 +7,13 @@ import Shop from './pages/Shop';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
   return (
     <Router>
-      <div className="App">
+      <div className="App d-flex flex-column min-vh-100">
         <NavigationBar />
         <main className="flex-grow-1">
           <Routes>
@@ -26,6 +27,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

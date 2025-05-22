@@ -8,10 +8,10 @@ interface ProductCardProps {
   showPrice?: boolean;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ 
-  product, 
-  showBuyButton = false, 
-  showPrice = false 
+const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  showBuyButton = false,
+  showPrice = false
 }) => {
   const formatPrice = (price: number): string => {
     return new Intl.NumberFormat('es-CL', {
@@ -22,28 +22,48 @@ const ProductCard: React.FC<ProductCardProps> = ({
     }).format(price);
   };
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const target = e.target as HTMLImageElement;
+    target.src = `https://via.placeholder.com/300x250/6c757d/ffffff?text=Producto`;
+  };
+
+  const handleClick = () => {
+    console.log(`Clicked on product: ${product.title}`);
+    // Aquí puedes agregar la lógica para manejar el click
+  };
+
   return (
     <Card className="h-100 product-card">
-      <Card.Img 
-        variant="top" 
-        src={product.image} 
+      <Card.Img
+        variant="top"
+        src={product.image}
         alt={product.title}
         className="product-image"
+        onError={handleImageError}
+        style={{ height: '250px', objectFit: 'cover' }}
       />
       <Card.Body className="d-flex flex-column">
         <Card.Title>{product.title}</Card.Title>
-        <Card.Text>{product.description}</Card.Text>
-        {(product.price || showPrice) && (
-          <Card.Text className="text-danger mt-auto">
-            <strong>{formatPrice(product.price || 0)}</strong>
+        <Card.Text className="flex-grow-1">{product.description}</Card.Text>
+        {(product.price !== undefined || showPrice) && product.price && (
+          <Card.Text className="text-danger fw-bold">
+            {formatPrice(product.price)}
           </Card.Text>
         )}
         {showBuyButton ? (
-          <Button variant="primary" className="mt-2">
+          <Button
+            variant="primary"
+            className="mt-auto"
+            onClick={handleClick}
+          >
             Comprar Ahora
           </Button>
         ) : (
-          <Button variant="secondary" className="mt-2">
+          <Button
+            variant="secondary"
+            className="mt-auto"
+            onClick={handleClick}
+          >
             Ver Detalles
           </Button>
         )}

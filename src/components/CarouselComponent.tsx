@@ -30,16 +30,23 @@ const CarouselComponent: React.FC = () => {
     }
   ];
 
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const target = e.target as HTMLImageElement;
+    target.src = `https://via.placeholder.com/1200x500/6c757d/ffffff?text=Imagen+no+disponible`;
+  };
+
   return (
-    <Carousel>
+    <Carousel fade interval={5000} className="mb-4">
       {carouselItems.map((item) => (
-        <Carousel.Item key={item.id}>
+        <Carousel.Item key={item.id} className="carousel-item">
           <img
             className="d-block w-100"
             src={item.image}
             alt={item.title}
+            onError={handleImageError}
+            style={{ height: '500px', objectFit: 'cover' }}
           />
-          <Carousel.Caption>
+          <Carousel.Caption className="carousel-caption">
             <h5>{item.title}</h5>
             <p>{item.description}</p>
           </Carousel.Caption>
