@@ -1,42 +1,166 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* Ajustar el ancho del logo */
+.nav-width {
+  width: 10%;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Color de fondo personalizado */
+.bg-light {
+  background-color: #d9d9d9 !important;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Estilos para el navbar personalizado */
+.custom-navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar-toggler {
+  border-color: transparent;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Estilos para los enlaces del navbar */
+.navbar-nav .nav-link {
+  color: #000000 !important;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #28a745 !important;
+}
+
+.navbar-nav .nav-link.active {
+  font-weight: bold;
+  color: #28a745 !important;
+}
+
+/* Estilos para el carousel */
+.carousel-item {
+  height: 500px;
+}
+
+.carousel-item img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  bottom: 20px;
+}
+
+.carousel-caption h5 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.carousel-caption p {
+  font-size: 1.1rem;
+}
+
+/* Estilos para las tarjetas de productos */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.product-image {
+  height: 250px;
+  object-fit: cover;
+}
+
+/* Estilos para las categorías */
+.category-card {
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+  transform: scale(1.05);
+}
+
+.category-image {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Estilos para el equipo */
+.team-member img {
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover img {
+  transform: scale(1.1);
+}
+
+/* Estilos para la galería */
+.gallery-image {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos para el mapa */
+.map-container {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Asegurar que el layout se vea bien */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer pegado al fondo */
+footer {
+  margin-top: auto;
+}
+
+/* Estilos para formularios */
+.form-control:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* Utilidades adicionales */
+.text-decoration-none {
+  text-decoration: none !important;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .nav-width {
+      width: auto;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .carousel-item {
+      height: 300px;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  
+  .carousel-caption h5 {
+      font-size: 1.3rem;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  
+  .carousel-caption p {
+      font-size: 0.9rem;
+  }
+  
+  .product-image {
+      height: 200px;
+  }
 }
