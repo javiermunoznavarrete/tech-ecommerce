@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Shop from './pages/Shop';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import { CartProvider } from './context/CartContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './App.css';
@@ -13,18 +14,20 @@ import './App.css';
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="App d-flex flex-column min-vh-100">
-        <NavigationBar />
-        <main className="flex-grow-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <CartProvider>
+        <div className="App d-flex flex-column min-vh-100">
+          <NavigationBar />
+          <main className="flex-grow-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </CartProvider>
     </Router>
   );
 };

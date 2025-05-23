@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
-import { Product } from '../types/Product';
+import { useCart } from '../context/CartContext';
+import type { Product } from '../types/Product';
 
 interface ProductCardProps {
   product: Product;
@@ -13,6 +14,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   showBuyButton = false,
   showPrice = false
 }) => {
+  const { dispatch } = useCart();
+
   const formatPrice = (price: number): string => {
     return new Intl.NumberFormat('es-CL', {
       style: 'currency',
@@ -27,9 +30,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
     target.src = `https://via.placeholder.com/300x250/6c757d/ffffff?text=Producto`;
   };
 
-  const handleClick = () => {
-    console.log(`Clicked on product: ${product.title}`);
-    // Aquí puedes agregar la lógica para manejar el click
+  const handleAddToCart = () => {
+    dispatch({ type: 'ADD_ITEM', payload: product });
   };
 
   return (
@@ -54,15 +56,15 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <Button
             variant="primary"
             className="mt-auto"
-            onClick={handleClick}
+            onClick={handleAddToCart}
           >
-            Comprar Ahora
+            Agregar al Carrito
           </Button>
         ) : (
           <Button
             variant="secondary"
             className="mt-auto"
-            onClick={handleClick}
+            onClick={() => console.log('Ver detalles:', product.title)}
           >
             Ver Detalles
           </Button>

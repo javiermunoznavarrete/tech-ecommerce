@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import CarouselComponent from '../components/CarouselComponent';
 import ProductCard from '../components/ProductCard';
-import { Product } from '../types/Product';
+import type { Product } from '../types/Product';
 
 const Home: React.FC = () => {
   const ofertasDestacadas: Product[] = [
